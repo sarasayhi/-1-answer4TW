@@ -1,4 +1,4 @@
-package BaseRule;
+package com.Marissa.BaseRule;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -241,17 +241,17 @@ public class baseJava {
         print(13, Math.log(2.71));
     }
 
-    public static void main(String[] args){
-       /* System.out.println("hello Marissa!");
+    /*public static void main(String[] args){
+       *//* System.out.println("hello Marissa!");
         demoOperation();
         demoControlFlow();
-        demoString();*/
+        demoString();*//*
 //        demoList();
 //        demoSet();
 //        demoKeyValue();
         //集合 列表 keyValue 去重
         demoCommon();
-    }
+    }*/
 
 }
 

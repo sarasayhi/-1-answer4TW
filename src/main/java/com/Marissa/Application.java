@@ -1,11 +1,16 @@
-import org.springframework.boot.Banner;
+package com.Marissa;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class Application extends SpringBootServletInitializer {
+@ComponentScan(basePackages={"com.Marissa"})
+public class Application {
+//        extends SpringBootServletInitializer {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 /*    @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -18,7 +23,7 @@ public class Application extends SpringBootServletInitializer {
         SpringApplication.run(Application.class, args);
     }*/
 
-    @Override
+    /*@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return configureApplication(builder);
     }
@@ -30,6 +35,6 @@ public class Application extends SpringBootServletInitializer {
     private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
         return builder.sources(Application.class);
 //                .bannerMode(Banner.Mode.OFF);
-    }
+    }*/
 
 }
