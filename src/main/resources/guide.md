@@ -18,3 +18,7 @@ https://github.com/mobz/elasticsearch-head
 https://www.elastic.co/downloads/elasticsearchhttps://www.elastic.co/downloads/elasticsearch
 
 http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html
+
+https://www.cnblogs.com/jiaoyiping/p/4189114.html
+
+https://www.cnblogs.com/OnlyCT/p/5241864.html

@@ -9,7 +9,6 @@ package com.Marissa.demo.controller;
 
 import com.Marissa.demo.domain.Menu;
 import com.google.common.collect.Maps;
-import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpHeaders;
@@ -32,22 +31,22 @@ import java.util.Map;
 @RestController
 public class RespController {
 
-    @PostMapping("/test")
-    @ApiOperation(value = "string类型",notes = "针对ResponseEntity<String>")
-    public ResponseEntity<String> test(){
-        Map<String,Object> map= Maps.newHashMap();
-        map.put("message","保存成功");
-        map.put("success",true);
-        String json=new Gson().toJson(map);
-        return new ResponseEntity<String>(json,new HttpHeaders(), HttpStatus.OK);
-
-    }
-    @PostMapping("/test1")
-    @ApiOperation(value = "实体类",notes = "针对ResponseEntity<T>类型")
-    public ResponseEntity<Menu> test1(){
-        Menu menu=new Menu("m1","首页");
-        return new ResponseEntity<Menu>(menu,new HttpHeaders(), HttpStatus.OK);
-
-    }
+//    @PostMapping("/test")
+//    @ApiOperation(value = "string类型",notes = "针对ResponseEntity<String>")
+//    public ResponseEntity<String> test(){
+//        Map<String,Object> map= Maps.newHashMap();
+//        map.put("message","保存成功");
+//        map.put("success",true);
+//        String json=new Gson().toJson(map);
+//        return new ResponseEntity<String>(json,new HttpHeaders(), HttpStatus.OK);
+//
+//    }
+//    @PostMapping("/test1")
+//    @ApiOperation(value = "实体类",notes = "针对ResponseEntity<T>类型")
+//    public ResponseEntity<Menu> test1(){
+//        Menu menu=new Menu("m1","首页");
+//        return new ResponseEntity<Menu>(menu,new HttpHeaders(), HttpStatus.OK);
+//
+//    }
 
 }
