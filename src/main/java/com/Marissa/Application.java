@@ -2,16 +2,23 @@ package com.Marissa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages={"com.Marissa"})
-public class Application {
+public class Application  {
 //        extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
+   /* implements EmbeddedServletContainerCustomizer
+   @Override
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+            container.setPort(7777);
+    }*/
 /*    @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         //自定义应用程序或调用application.sources（...）添加源

@@ -241,17 +241,18 @@ public class baseJava {
         print(13, Math.log(2.71));
     }
 
-    /*public static void main(String[] args){
-       *//* System.out.println("hello Marissa!");
-        demoOperation();
-        demoControlFlow();
-        demoString();*//*
+//    public static void main(String[] args){
+//        System.out.println("hello Marissa!");
+//        demoOperation();
+//        demoControlFlow();
+//        demoString();
 //        demoList();
 //        demoSet();
 //        demoKeyValue();
         //集合 列表 keyValue 去重
-        demoCommon();
-    }*/
+//        demoCommon();
+//        print(7,new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+//    }
 
 }
 

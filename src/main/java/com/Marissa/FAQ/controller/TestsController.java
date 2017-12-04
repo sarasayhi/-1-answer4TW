@@ -1,9 +1,7 @@
 package com.Marissa.FAQ.controller;
 
-import com.alibaba.fastjson.JSON;
-import org.springframework.http.HttpRequest;
+import com.Marissa.FAQ.utils.CommonUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,7 +14,7 @@ import java.io.InputStream;
 
 @Controller
 @RequestMapping("/")
-public class testController {
+public class TestsController {
     @RequestMapping("/test")
     @ResponseBody
     public String entry(HttpServletRequest request) throws ServletException,IOException{
@@ -42,5 +40,10 @@ public class testController {
     @ResponseBody
     public String t(){
         return "index";
+    }
+
+    @RequestMapping("/md")
+    public String md(){
+        return "22";
     }
 }
