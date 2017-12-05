@@ -1,4 +1,7 @@
- <html lang="zh-cn"><head>
+<!DOCTYPE html>
+ <html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,8 +21,8 @@
 
             <div class="hd-top-right">
                 <div class="hd-login-in">
-                    <a href="login.html?to=login">登录</a>
-                    <a href="login.html?to=register">注册</a>
+                    <a href="22.html?to=login">登录</a>
+                    <a href="file.html?to=register">注册</a>
                 </div>
                 <!--登录之后显示-->
                 <div class="hd-user" style="display: none;">
@@ -121,7 +124,7 @@
             </div>
         </div>
 
-        <form action="/test" method="post" enctype="multipart/form-data">
+        <form action="/file/upload" method="post" enctype="multipart/form-data">
             请选择上传文件:<input id="myfile" name="myfile" type="file"/>
             <input type="submit" name="submit">
         </form>

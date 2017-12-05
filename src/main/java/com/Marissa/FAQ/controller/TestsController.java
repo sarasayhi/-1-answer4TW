@@ -1,6 +1,5 @@
 package com.Marissa.FAQ.controller;
 
-import com.Marissa.FAQ.utils.CommonUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Controller
-@RequestMapping("/")
 public class TestsController {
     @RequestMapping("/test")
     @ResponseBody
@@ -36,14 +34,13 @@ public class TestsController {
         return "index";
     }
 
-    @RequestMapping("/t")
-    @ResponseBody
+        @RequestMapping("/")
     public String t(){
-        return "index";
+        return "/index";
     }
 
     @RequestMapping("/md")
     public String md(){
-        return "22";
+        return "/22";
     }
 }

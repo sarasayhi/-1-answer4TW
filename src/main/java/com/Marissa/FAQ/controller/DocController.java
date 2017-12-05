@@ -5,14 +5,19 @@ import com.Marissa.FAQ.utils.CommonUtils;
 import com.Marissa.FAQ.utils.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("/file")
 public class DocController {
     @Autowired
     testService tesService;
-    public String uploadImage(@RequestParam("file")MultipartFile file){
+
+    @RequestMapping("/upload")
+    public @ResponseBody String uploadImage(@RequestParam("file")MultipartFile file){
         try{
            String fileUrl = tesService.saveImage(file);
            if(fileUrl == null){
