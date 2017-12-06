@@ -1,13 +1,21 @@
 package com.Marissa.FAQ.repository.po;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
+@Entity
+@Table(name = "comment")
 public class comment implements Serializable {
+    @Id
+    @GeneratedValue
     private int id;
+    @Column(name = "comment")
     private String comment;
+    @Column(name = "userId")
     private int userId;
+    @Column(name = "docId")
     private int docId;
+    @Column(name = "createDate")
     private Date createDate;
 
     public comment() {}

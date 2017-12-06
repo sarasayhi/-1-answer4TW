@@ -1,10 +1,16 @@
 package com.Marissa.FAQ.repository.po;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
+@Table(name = "favor")
 public class favor implements Serializable{
+    @Id
+    @GeneratedValue
     private int id;
+    @Column(name = "docId")
     private int docId;
+    @Column(name = "userId")
     private int userId;
 
     public favor() {}
