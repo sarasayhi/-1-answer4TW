@@ -5,10 +5,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
-public class user implements Serializable {
+@Table(name = "test")
+public class User implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "userName")
     private String userName;
@@ -17,9 +17,20 @@ public class user implements Serializable {
     @Column(name = "lastTime")
     private Date lastTime;
 
-    public user() {}
+    public User() {}
 
-    public user(String userName, String pwd, Date lastTime) {
+    public User(String userName, String pwd) {
+        this.userName = userName;
+        this.pwd = pwd;
+    }
+    public User(Long id,String userName, String pwd, Date lastTime) {
+        this.id = id;
+        this.userName = userName;
+        this.pwd = pwd;
+        this.lastTime = lastTime;
+    }
+
+    public User(String userName, String pwd, Date lastTime) {
         this.userName = userName;
         this.pwd = pwd;
         this.lastTime = lastTime;

@@ -1,14 +1,12 @@
 package com.Marissa.FAQ.controller;
 
 import com.Marissa.FAQ.repository.po.comment;
-import com.Marissa.FAQ.utils.CommonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.stream.events.Comment;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

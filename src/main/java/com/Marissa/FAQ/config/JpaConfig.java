@@ -32,11 +32,12 @@ public class JpaConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         //此处com.example.*.model是你的java bean所在的包名
-        factory.setPackagesToScan("com.example.*.model");
+        factory.setPackagesToScan("com.Marissa.FAQ.repository.po");
         factory.setDataSource(dataSource);
 
         Map<String, Object> jpaProperties = new HashMap<String, Object>();
         jpaProperties.put("hibernate.ejb.naming_strategy","org.hibernate.cfg.ImprovedNamingStrategy");
+        jpaProperties.put("hibernate.hbm2ddl.auto","update");
         jpaProperties.put("hibernate.jdbc.batch_size",50);
 
         factory.setJpaPropertyMap(jpaProperties);

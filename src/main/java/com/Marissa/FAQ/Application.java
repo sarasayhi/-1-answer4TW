@@ -1,4 +1,4 @@
-package com.Marissa;
+package com.Marissa.FAQ;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

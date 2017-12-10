@@ -1,13 +1,11 @@
 package com.Marissa.FAQ.repository;
 
-import com.Marissa.FAQ.repository.po.doc;
-import com.Marissa.FAQ.repository.po.user;
+import com.Marissa.FAQ.repository.po.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface userRepository extends JpaRepository<user, Long> {
+public interface userRepository extends JpaRepository<User, Long> {
     /*@Modifying
     @Query ( "update DeviceDO d set d.deleted = true where d.id in :ids" )
     void deleteBatch(@Param ( "ids" ) List<Long> ids);
