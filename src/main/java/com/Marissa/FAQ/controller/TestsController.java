@@ -37,7 +37,7 @@ public class TestsController {
 
         @RequestMapping("/")
     public String t(){
-        return "/index";
+        return "index";
     }
 
     @RequestMapping("/md")

@@ -318,7 +318,7 @@
                 // epm.removeSessionItem(epm.k.BUYER);
                 // epm.removeSessionItem(epm.k.ADDRESS_LIST);
 
-                window.location.href = 'index.html';
+                window.location.href = 'ww.html';
             });
         },
 
