@@ -3,8 +3,8 @@ package com.Marissa.FAQ.repository.po;
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
-@Table(name = "favor")
-public class favor implements Serializable{
+@Table(name = "Favor")
+public class Favor implements Serializable{
     @Id
     @GeneratedValue
     private int id;
@@ -13,9 +13,9 @@ public class favor implements Serializable{
     @Column(name = "userId")
     private int userId;
 
-    public favor() {}
+    public Favor() {}
 
-    public favor(int id, int docId, int userId) {
+    public Favor(int id, int docId, int userId) {
         this.id = id;
         this.docId = docId;
         this.userId = userId;

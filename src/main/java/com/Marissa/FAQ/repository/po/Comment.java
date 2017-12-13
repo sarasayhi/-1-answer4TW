@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 @Entity
-@Table(name = "comment")
-public class comment implements Serializable {
+@Table(name = "Comment")
+public class Comment implements Serializable {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "comment")
+    @Column(name = "Comment")
     private String comment;
     @Column(name = "userId")
     private int userId;
@@ -18,9 +18,9 @@ public class comment implements Serializable {
     @Column(name = "createDate")
     private Date createDate;
 
-    public comment() {}
+    public Comment() {}
 
-    public comment(int id, String comment, int userId, int docId, Date createDate) {
+    public Comment(int id, String comment, int userId, int docId, Date createDate) {
         this.id = id;
         this.comment = comment;
         this.userId = userId;

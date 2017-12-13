@@ -3,8 +3,8 @@ package com.Marissa.FAQ.repository.po;
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
-@Table(name = "history")
-public class history implements Serializable{
+@Table(name = "History")
+public class History implements Serializable{
     @Id
     @GeneratedValue
     private int id;
@@ -13,9 +13,9 @@ public class history implements Serializable{
     @Column(name = "userId")
     private int userId;
 
-    public history() {}
+    public History() {}
 
-    public history(int id, int docId, int userId) {
+    public History(int id, int docId, int userId) {
         this.id = id;
         this.docId = docId;
         this.userId = userId;

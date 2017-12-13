@@ -1,8 +1,7 @@
 package com.Marissa.FAQ.controller;
 
-import com.Marissa.FAQ.repository.po.comment;
+import com.Marissa.FAQ.repository.po.Comment;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
@@ -15,7 +14,6 @@ import java.io.InputStream;
 @RestController
 public class TestsController {
     @RequestMapping("/test")
-    @ResponseBody
     public String entry(HttpServletRequest request) throws ServletException,IOException{
         //从request中获取流信息
         InputStream fileSource = request.getInputStream();
@@ -35,14 +33,9 @@ public class TestsController {
         return "index";
     }
 
-        @RequestMapping("/")
-    public String t(){
-        return "index";
-    }
-
     @RequestMapping("/md")
     public String md(){
-        comment comme =new comment();
+        Comment comme =new Comment();
         return "etet";
     }
 }

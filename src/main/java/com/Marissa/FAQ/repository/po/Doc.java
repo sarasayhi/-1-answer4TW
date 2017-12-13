@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 @Entity
-@Table(name = "doc")
-public class doc implements Serializable{
+@Table(name = "Doc")
+public class Doc implements Serializable{
     @Id
     @GeneratedValue
     private int id;
@@ -24,9 +24,9 @@ public class doc implements Serializable{
     @Column(name = "userId")
     private int userId;
 
-    public doc() {}
+    public Doc() {}
 
-    public doc(int id, String name, String content, String tags, int collectCnt, Date createTime, Date updateTime, int userId) {
+    public Doc(int id, String name, String content, String tags, int collectCnt, Date createTime, Date updateTime, int userId) {
         this.id = id;
         this.name = name;
         this.content = content;

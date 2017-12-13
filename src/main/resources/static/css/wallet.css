@@ -1,14 +1,14 @@
-/* Copyright (C) 2017
-* This file is part of the FAQ System.
-*
-* filename : default
-* function :
-* action   :
-* version  : 0.1
-* author   : MarissaMan
-* date     : 2017-11-29
-* modify   : 此文件如需修改,请联系MarissaMan
-*/
+/* Copyright (C) 2016
+ * This file is part of the Epiphyllum B7 System.
+ *
+ * filename : wallet.css
+ * function :
+ * action   :
+ * version  : 7.1
+ * author   : MarissaMan
+ * date     : 2017-01-19
+ * modify   :
+ */
 .general {
     margin: 40px 0;
     padding: 0 40px;
@@ -76,7 +76,6 @@
 
 .detail-list-title {
     padding-left: 15px;
-    width: 900px;
     height: 40px;
     line-height: 40px;
     background-color: #f4f4f4;
@@ -97,7 +96,7 @@
 .detail-list-title div,
 .detail-item div {
     display: inline-block;
-    width: 290px;
+    width: 175px;
     text-align: center;
 }
 

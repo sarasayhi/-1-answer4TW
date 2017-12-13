@@ -1,26 +1,21 @@
 package com.Marissa.FAQ.controller;
 
 import com.Marissa.FAQ.repository.po.User;
-import com.Marissa.FAQ.repository.userRepository;
+import com.Marissa.FAQ.repository.UserRepository;
 import com.Marissa.FAQ.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private userRepository Repository;
+    private UserRepository Repository;
 
     @RequestMapping(value = "/byname", method = RequestMethod.GET)
-    @ResponseBody
     public String getUser() {
 //        Map<String, Object> map = CommonUtil.getParameterMap(request);
 //        String username = (String) map.get("username");

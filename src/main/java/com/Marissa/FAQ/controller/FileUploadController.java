@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -17,23 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @RestController
 public class FileUploadController {
     //访问路径为：http://127.0.0.1:8080/file
-    @RequestMapping("/file")
-    public String file(){
-        return "/file";
-    }
-
-    @RequestMapping("/home")
-    public String home(){
-        return "/home";
-    }
-
-    @RequestMapping("/mutifile")
-    public String mutifile(){
-        return "/mutifile";
-    }
-
     @RequestMapping("/upload")
-    @ResponseBody
     public String handleFileUpload(@RequestParam("file")MultipartFile file){
         if(!file.isEmpty()){
             try {
@@ -67,10 +50,8 @@ public class FileUploadController {
      * @return
 
      */
-
     @RequestMapping(value="/batch/upload", method=RequestMethod.POST)
-    public @ResponseBody
-    String handleFileUpload(HttpServletRequest request){
+    public String handleFileUpload(HttpServletRequest request){
         List<MultipartFile> files =((MultipartHttpServletRequest)request).getFiles("file");
         MultipartFile file = null;
         BufferedOutputStream stream = null;
@@ -92,6 +73,5 @@ public class FileUploadController {
             }
         }
         return "upload successful";
-
     }
 }

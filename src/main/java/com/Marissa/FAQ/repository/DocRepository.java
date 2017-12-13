@@ -1,11 +1,11 @@
 package com.Marissa.FAQ.repository;
 
-import com.Marissa.FAQ.repository.po.doc;
+import com.Marissa.FAQ.repository.po.Doc;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface docRepository extends PagingAndSortingRepository<doc, Long> {
+public interface DocRepository extends PagingAndSortingRepository<Doc, Long> {
     /*@Modifying
     @Query ( "update DeviceDO d set d.deleted = true where d.id in :ids" )
     void deleteBatch(@Param ( "ids" ) List<Long> ids);

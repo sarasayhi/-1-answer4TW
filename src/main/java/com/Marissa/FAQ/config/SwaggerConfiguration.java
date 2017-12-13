@@ -9,7 +9,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-//swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html
+//swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/Doc.html
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface userRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     /*@Modifying
     @Query ( "update DeviceDO d set d.deleted = true where d.id in :ids" )
     void deleteBatch(@Param ( "ids" ) List<Long> ids);

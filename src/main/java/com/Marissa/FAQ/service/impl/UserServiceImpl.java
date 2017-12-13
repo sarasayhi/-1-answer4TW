@@ -1,7 +1,7 @@
 package com.Marissa.FAQ.service.impl;
 
 import com.Marissa.FAQ.repository.po.User;
-import com.Marissa.FAQ.repository.userRepository;
+import com.Marissa.FAQ.repository.UserRepository;
 import com.Marissa.FAQ.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Date;
 @Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
-    private userRepository userJpaDao;
+    private UserRepository userJpaDao;
 
     @Override
     public void getUserByName() {

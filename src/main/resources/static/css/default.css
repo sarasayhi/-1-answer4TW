@@ -1,13 +1,13 @@
-/* Copyright (C) 2017
-* This file is part of the FAQ System.
+/* Copyright (C) 2016
+* This file is part of the Epiphyllum B7 System.
 *
 * filename : default
 * function :
 * action   :
-* version  : 0.1
-* author   : MarissaMan
-* date     : 2017-11-29
-* modify   : 此文件如需修改,请联系MarissaMan
+* version  : 7.1
+* author   : carl
+* date     : 2016-12-07
+* modify   : 此文件如需修改,请联系carl
 */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -611,6 +611,7 @@ header {
 
 /*logo*/
 .hd-bar {
+    height: 160px;
     background-color: #fff;
 }
 
@@ -637,8 +638,8 @@ header {
 .hd-search {
     position: relative;
     float: left;
-    margin-left: 30px;
-    margin-top: 20px;
+    margin-left: 130px;
+    margin-top: 42px;
 }
 
 .hd-search-form {
@@ -729,7 +730,7 @@ header {
     height: 36px;
     line-height: 36px;
     background-color: #78885b;
-    margin: 20px 0;
+    margin-top: 42px;
     padding: 0 15px;
     position: relative;
     cursor: pointer;
@@ -1024,6 +1025,7 @@ header {
 
 /*尾页*/
 footer {
+    height: 409px;
     background-color: #78885b;
 }
 
@@ -1110,6 +1112,57 @@ footer {
     height: 29px;
     text-align: center;
     font-size: 12px;
+}
+
+/*右边下载APP回到顶部*/
+
+.fixed-right {
+    position: fixed;
+    bottom: 100px;
+    right: 50%;
+    margin-right: -710px;
+    z-index: 99;
+}
+
+@media (max-width: 1360px) {
+    .fixed-right {
+        position: fixed;
+        bottom: 100px;
+        right: 0;
+        margin-right: 0;
+    }
+}
+
+.to-top-app {
+    width: 100px;
+    height: 120px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.fixed-right .service {
+    width: 90px;
+    height: 110px;
+}
+
+.go-top {
+    display: none;
+    width: 44px;
+    height: 44px;
+    line-height: 14px;
+    border: 1px solid #b9b9b9;
+    text-align: center;
+    padding: 4px;
+    font-size: 12px;
+    background-color: #fff;
+}
+
+.go-top:hover {
+    background-color: #f4f4f4;
+}
+
+.i-top {
+    font-size: 30px;
 }
 
 /*start 列表 : 一行五列*/
@@ -1403,8 +1456,10 @@ footer {
 }
 
 .cm-main {
+    float: right;
     padding: 0 40px;
     margin-bottom: 90px;
+    width: 100%;
     min-height: 660px;
     background-color: #fff;
 }
