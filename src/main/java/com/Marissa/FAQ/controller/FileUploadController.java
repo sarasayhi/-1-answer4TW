@@ -1,12 +1,9 @@
 package com.Marissa.FAQ.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.*;
@@ -31,24 +28,16 @@ public class FileUploadController {
                 e.printStackTrace();
                 return "上传失败,"+e.getMessage();
             }
-
             return "上传成功";
-
         }else{
-
             return "上传失败，因为文件是空的.";
-
         }
     }
 
     /**
-
      * 多文件具体上传时间，主要是使用了MultipartHttpServletRequest和MultipartFile
-
      * @param request
-
      * @return
-
      */
     @RequestMapping(value="/batch/upload", method=RequestMethod.POST)
     public String handleFileUpload(HttpServletRequest request){
@@ -73,5 +62,25 @@ public class FileUploadController {
             }
         }
         return "upload successful";
+    }
+
+    @RequestMapping("/test")
+    public String entry(HttpServletRequest request) throws ServletException,IOException{
+        //从request中获取流信息
+        InputStream fileSource = request.getInputStream();
+        String tmpPath = "E:/tmpFile";
+        //tmpFile 指向临时文件
+        File tmpFile = new File(tmpPath);
+        // outputStream文件输出流指向这个临时文件
+        FileOutputStream outputStream = new FileOutputStream(tmpFile);
+        byte b[] = new byte[1024];
+        int n;
+        while ((n = fileSource.read(b)) != -1){
+            outputStream.write(b,0,n);
+        }
+        //关闭输出流、输入流
+        outputStream.close();
+        fileSource.close();
+        return "index";
     }
 }

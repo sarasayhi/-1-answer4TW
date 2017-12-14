@@ -1,3 +1,7 @@
+1.io流工具类
+2.路径问题
+3.文件大小
+4.扩展名问题
 在线java7 api 文档 ：http://tool.oschina.net/apidocs#J
 Java8 api ：https://docs.oracle.com/javase/8/docs/api/index.html
 其他项目转换为springboot项目
@@ -10,6 +14,7 @@ https://gitee.com/xiaoym/swagger-bootstrap-ui
 
 1.配置
 config/elasticSearch.yml
+
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 

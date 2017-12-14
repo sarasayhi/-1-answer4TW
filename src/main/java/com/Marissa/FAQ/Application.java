@@ -13,17 +13,23 @@ import javax.servlet.MultipartConfigElement;
 @SpringBootApplication
 @ComponentScan(basePackages={"com.Marissa"})
 public class Application  {
+    /**
+     * 文件上传配置
+     * @return
+     */
     @Bean
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        //// 设置文件大小限制 ,超了，页面会抛出异常信息，这时候就需要进行异常信息的处理了;
-        factory.setMaxFileSize("128KB"); //KB,MB
-        /// 设置总上传数据总大小
-        factory.setMaxRequestSize("256KB");
+        // 设置文件大小限制 ,超了，页面会抛出异常信息，这时候就需要进行异常信息的处理了;
+        factory.setMaxFileSize("500MB"); //KB,MB
+        // 设置总上传数据总大小
+        factory.setMaxRequestSize("600MB");
         //Sets the directory location wherefiles will be stored.
-        //factory.setLocation("路径地址");
+        factory.setLocation("D:\\test");
         return factory.createMultipartConfig();
     }
+
+
     //        extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
