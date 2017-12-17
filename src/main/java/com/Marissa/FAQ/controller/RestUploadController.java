@@ -10,6 +10,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -21,8 +23,11 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -30,9 +35,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 @Api(value = "文档操作",tags = "文档")
 @RestController
@@ -53,7 +57,16 @@ public class RestUploadController {
 
         Pageable pageable = new PageRequest(1,1, Sort.Direction.DESC,"id");
         List<Doc> list = docService.getPageList(pageable);
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        ResourceLoader resourceLoader = new DefaultResourceLoader();
+        String path1 = "";
+        try {
+            path1 = resourceLoader.getResource("file:").getFile().getAbsolutePath() + File.separator +"upload"+ File.separator ;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        list.get(0).setTags(path1);
+        return new ResponseEntity<List<Doc>>(list,HttpStatus.OK);
     }
     // Multiple file upload
     @PostMapping("/api/upload/multi")
@@ -67,7 +80,7 @@ public class RestUploadController {
         if (StringUtils.isEmpty(uploadedFileName)) {
             return new ResponseEntity<>("please select a file!", HttpStatus.OK);
         }
-
+//            upload(Arrays.asList(uploadfiles),request);
         try {
             saveUploadedFiles(Arrays.asList(uploadfiles),request);
         } catch (IOException e) {
@@ -75,27 +88,35 @@ public class RestUploadController {
         }
         return new ResponseEntity<>("Successfully uploaded - "+ uploadedFileName, HttpStatus.OK);
     }
-
-    // maps html form to a Model
-    @PostMapping("/api/upload/multi/model")
-    public ResponseEntity<?> multiUploadFileModel(@ModelAttribute UploadModel model,HttpServletRequest request) {
-
-        logger.debug("Multiple file upload! With UploadModel");
-
-        try {
-
-            saveUploadedFiles(Arrays.asList(model.getFiles()),request);
-
-        } catch (IOException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        return new ResponseEntity<>("Successfully uploaded!", HttpStatus.OK);
-
-    }
+//
+//    // maps html form to a Model
+//    @PostMapping("/api/upload/multi/model")
+//    public ResponseEntity<?> multiUploadFileModel(@ModelAttribute UploadModel model,HttpServletRequest request) {
+//
+//        logger.debug("Multiple file upload! With UploadModel");
+//
+//        try {
+//
+//            saveUploadedFiles(Arrays.asList(model.getFiles()),request);
+//
+//        } catch (IOException e) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//
+//        return new ResponseEntity<>("Successfully uploaded!", HttpStatus.OK);
+//
+//    }
 
     //save file
     private void saveUploadedFiles(List<MultipartFile> files,HttpServletRequest request) throws IOException {
+        ResourceLoader resourceLoader = new DefaultResourceLoader();
+        String path1 = "";
+        try {
+            path1 = resourceLoader.getResource("file:").getFile().getAbsolutePath() + File.separator +"upload"+ File.separator ;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         for (MultipartFile file : files) {
 
@@ -104,15 +125,26 @@ public class RestUploadController {
             }
 
             byte[] bytes = file.getBytes();
-            String realPath = request.getServletContext().getRealPath(
-                    "//test//");
+//            String realPath = request.getServletContext().getRealPath(
+//                    "//test//");
 //            File root = new File(CommonUtils.IMAGE_DIR);
 //            if (!root.exists()) {
 //                //创建临时目录
 //                root.mkdirs();
 //                System.out.println( root.mkdir());
 //            }
-            Path path = Paths.get(realPath + file.getOriginalFilename());
+            Path path = Paths.get(path1 + file.getOriginalFilename());
+//            File tempFile = new File(path1);
+//            if (!tempFile.getParentFile().exists()) {
+//                tempFile.getParentFile().mkdir();
+//            }
+//            if (!tempFile.exists()) {
+//                try {
+//                    tempFile.createNewFile();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
             logger.info("{0}filesMsg:  "+JSON.toJSONString(file));
             Files.write(path, bytes);
 
@@ -302,4 +334,58 @@ try{
 //                uploadfile.getOriginalFilename(), new HttpHeaders(), HttpStatus.OK);
 //
 //    }
+
+    public String upload(List<MultipartFile> files,HttpServletRequest request) {
+
+        ResourceLoader resourceLoader = new DefaultResourceLoader();
+        String path = "";
+        try {
+            path = resourceLoader.getResource("file:").getFile().getAbsolutePath() + File.separator +"upload"+ File.separator ;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ServletContext t = request.getSession().getServletContext();
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(t);
+        if (multipartResolver.isMultipart(request)) {
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+            Iterator iter = multiRequest.getFileNames();
+            while (iter.hasNext()) {
+                MultipartFile file = multiRequest.getFile(iter.next().toString());
+                if (file != null) {
+                    path += new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(System.currentTimeMillis()) + "_" + file.getOriginalFilename();
+
+                    File tempFile = new File(path);
+                    if (!tempFile.getParentFile().exists()) {
+                        tempFile.getParentFile().mkdir();
+                    }
+                    if (!tempFile.exists()) {
+                        try {
+                            tempFile.createNewFile();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    try {
+                        file.transferTo(tempFile);
+                        logger.info(tempFile.getAbsolutePath());
+                    } catch (IllegalStateException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    logger.info("{0}filesMsg:  "+JSON.toJSONString(file));
+                    //将文件信息存入doc信息表中
+//            String name, String content, String tags, int collectCnt, Date createTime, Date updateTime, int userId
+                    Doc doc = new Doc(file.getName(),"","tags",0,new Date(),new Date(),0,0,file.getName());
+                    docService.addDocMsg(doc);
+                    //将二进制流数据存入数据表中 id值 id 数字块 数据
+                }
+
+            }
+        }
+        return path;
+    }
+
 }

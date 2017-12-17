@@ -58,12 +58,16 @@ function initDataList() {
         // } else {
         //     $load.show().addClass('load').text('加载更多');
         // }
+        var path = "";
         $.each(result, function(index, value) {
             //
             //     if (index == rows - 1) {
             //         return;
             //     }
             // for (var i = 0; i < 5; i++) {
+            if(index == 0){
+                path = value['tags'];
+            }
             html += '<li class="">'
                 + '<div class="detail-list-title">'
                 + '<div title="' + value["id"] + '">' + value["id"] + '</div>'
@@ -73,7 +77,7 @@ function initDataList() {
                 + '<div>' + value["tags"] + '</div>'
                 + '<div>'
                 + '<a class="cm-btn-sm cm-btn-active">详情</a>'
-                + '<a class="cm-btn-sm cm-btn-active download" data-name="' + value["name"] + '">下载</a>'
+                + '<a href="'+ path + value["name"] + '" class="cm-btn-sm cm-btn-active download" data-name="' + value["name"] + '">下载</a>'
                 + '<a class="cm-btn-sm cm-btn-active">编辑</a>'
                 + '<a class="cm-btn-sm cm-btn-active">删除</a>'
                 + '</div>'
@@ -114,6 +118,7 @@ function eventTrigger() {
     });
 
     $("body").on("click", ".removeclass", function (e) { //user click on remove text
+        var x = $InputsWrapper.find('input[type="file"]').length;
         if (x > 1) {
             $(this).parent('div').remove(); //remove text box
             x--; //decrement textbox
