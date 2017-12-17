@@ -28,7 +28,7 @@ public class PageController {
 
     @RequestMapping("/")
     public String t(){
-        return "upload";
+        return "index";
     }
 
 }

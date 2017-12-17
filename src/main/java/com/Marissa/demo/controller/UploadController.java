@@ -33,17 +33,17 @@ import java.util.UUID;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2017/09/04 21:19
  */
-@Api(value = "文件上传",tags = "文件上传")
-@Controller
-@RequestMapping("/api/upload")
+//@Api(value = "文件上传",tags = "文件上传")
+//@Controller
+//@RequestMapping("/api/upload")
 public class UploadController {
 
-    @ApiOperation(value = "文件素材上传接口")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile"),
-            @ApiImplicitParam(name = "title", value = "title", required = true)}
-    )
-    @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)
-    @ResponseBody
+//    @ApiOperation(value = "文件素材上传接口")
+//    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile"),
+//            @ApiImplicitParam(name = "title", value = "title", required = true)}
+//    )
+//    @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)
+//    @ResponseBody
     public RestMessage uploadMaterial(@RequestParam(value="file") MultipartFile[] files, @RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
         //int mul=1*1024*1024;
         String realPath=request.getSession().getServletContext().getRealPath("/upload");

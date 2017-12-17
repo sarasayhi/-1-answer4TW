@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2017/04/20 14:01
  */
-@Api(value = "测试",tags = "测试用例")
-@RestController
-@RequestMapping("/api/test")
+//@Api(value = "测试",tags = "测试用例")
+//@RestController
+//@RequestMapping("/api/test")
 public class TestController {
 
     /*@ApiOperation(value = "测试接口1",notes = "测试说明1")

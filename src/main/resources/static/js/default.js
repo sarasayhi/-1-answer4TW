@@ -17,12 +17,7 @@
         PRECISION_MONEY = 2,
         API_URL = 'https://127.0.0.1/FAQ',
         IMAGE_URL_PREFIX = 'https://127.0.0.1/FAQ',
-        // 微信支付二维码路径
-        // WECHAT_CODE_URL = '//t-web.3pzs.com/app/wechat_code_url.php',
         API_VERSION = 100,
-        // 高德WEB服务KEY
-        // MAP_KEY = '36d423a7c6f67b20a543bd3fa55978d4',
-        // IM_USER_KEY = '491ef3323f36b63e49a631e821c14b97',
         VERSION = 0.1;
 
     // 私有方法
@@ -54,14 +49,8 @@
         get title() {
             return TITLE;
         },
-        get mapKey() {
-            return MAP_KEY;
-        },
         get imageURLPrefix() {
             return IMAGE_URL_PREFIX;
-        },
-        get im_user_key() {
-            return IM_USER_KEY;
         },
         get version() {
             return VERSION;
@@ -69,9 +58,6 @@
         get api_url() {
             return API_URL;
         }
-        // ,get wechat_code_url() {
-        //     return WECHAT_CODE_URL;
-        // }
     };
 
     // 配置项
@@ -82,157 +68,12 @@
         get userToken() {
             return epm.getLocalItem(epm.k.USER_TOKEN);
         }
-
-        /* ,set currentCity(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setSessionItem(epm.k.CURRENT_CITY, value);
-         },
-         get currentCity() {
-         var value = epm.getSessionItem(epm.k.CURRENT_CITY);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         },
-
-         set locationAddress(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setLocalItem(epm.k.LOCATION_ADDRESS, value);
-         },
-         get locationAddress() {
-         var value = epm.getLocalItem(epm.k.LOCATION_ADDRESS);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         },
-
-         set address(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setLocalItem(epm.k.ADDRESS, value);
-         },
-         get address() {
-         var value = epm.getLocalItem(epm.k.ADDRESS);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return null;
-         }
-         },
-
-         set addressList(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setSessionItem(epm.k.ADDRESS_LIST, value);
-         },
-         get addressList() {
-         var value = epm.getSessionItem(epm.k.ADDRESS_LIST);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         },
-
-         set market(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setLocalItem(epm.k.MARKET, value);
-         },
-         get market() {
-         var value = epm.getLocalItem(epm.k.MARKET);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         },
-
-         set marketList(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setLocalItem(epm.k.MARKET_LIST, value);
-         },
-         get marketList() {
-         var value = epm.getLocalItem(epm.k.MARKET_LIST);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         },
-
-         set goodsClassList(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setSessionItem(epm.k.GOODS_CLASS_LIST, value);
-         },
-         get goodsClassList() {
-         var value = epm.getSessionItem(epm.k.GOODS_CLASS_LIST);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         },
-
-         set buyer(value) {
-         if (typeof value !== 'string') {
-         value = JSON.stringify(value);
-         }
-
-         epm.setSessionItem(epm.k.BUYER, value);
-         },
-         get buyer() {
-         var value = epm.getSessionItem(epm.k.BUYER);
-
-         try {
-         return JSON.parse(value);
-         } catch (err) {
-         return value;
-         }
-         }*/
     };
 
     // 键
     epm.k = {
         SEARCH_KEYWORDS: 'SEARCH_KEYWORDS',
         USER_TOKEN: 'USER_TOKEN',
-        // CURRENT_CITY: 'CURRENT_CITY',
-        // LOCATION_ADDRESS: 'LOCATION_ADDRESS',
-        // ADDRESS: 'ADDRESS',
-        // ADDRESS_LIST: 'ADDRESS_LIST',
-        // MARKET: 'MARKET',
-        // MARKET_LIST: 'MARKET_LIST',
-        // GOODS_CLASS_LIST: 'GOODS_CLASS_LIST',
-        // BUYER: 'BUYER',
-        // SELECTED_CART: 'SELECTED_CART',
         VERSION: 'VERSION'
     };
 
@@ -248,63 +89,9 @@
             }
             if (bool_version) {
                 epm.removeLocalItem(epm.k.VERSION);
-                // epm.removeLocalItem(epm.k.BUYER);
-                // epm.removeLocalItem(epm.k.MARKET_LIST);
-                // epm.removeLocalItem(epm.k.MARKET);
-                // epm.removeLocalItem(epm.k.ADDRESS);
-                // epm.removeLocalItem(epm.k.ADDRESS_LIST);
                 epm.setLocalItem(epm.k.VERSION, epm.v.version);
             }
         },
-        // getDistrict: function(callBack) {
-        //     epm.extendAjax('mock/citys.json', function(data) {
-        //         callBack(data);
-        //     });
-        // },
-        // getCurrentCity: function(callBack) {
-        //     var params = {};
-        //     params['key'] = epm.v.mapKey;
-        //
-        //     var url = 'https://restapi.amap.com/v3/ip';
-        //     epm.extendAjax(url, params, function(data) {
-        //         if (data['status'] === 0) {
-        //             alert("定位城市失败.");
-        //             return;
-        //         }
-        //
-        //         epm.c.currentCity = data;
-        //
-        //         if ($.isFunction(callBack)) {
-        //             callBack(data);
-        //         }
-        //     });
-        // },
-        // getLocationTips: function(keywords, adcode, callBack) {
-        //
-        //     if (!epm.c.currentCity) {
-        //         console.log('未定位城市.无法调用');
-        //         return;
-        //     }
-        //
-        //     var params = {};
-        //     params['key'] = epm.v.mapKey;
-        //     // params['city'] = epm.c.currentCity['adcode'];
-        //     params['city'] = adcode;
-        //     params['citylimit'] = true;
-        //     params['datatype'] = 'poi';
-        //     params['keywords'] = keywords;
-        //
-        //     var url = 'https://restapi.amap.com/v3/assistant/inputtips';
-        //     epm.extendAjax(url, params, function(data) {
-        //         if (data['status'] === 0) {
-        //             return;
-        //         }
-        //
-        //         if ($.isFunction(callBack)) {
-        //             callBack(data);
-        //         }
-        //     });
-        // },
 
         isLogin: function () {
             var user_token = epm.getLocalItem(epm.k.USER_TOKEN);
@@ -315,29 +102,9 @@
             params['action'] = 'clear_session';
             epm.ajax(params, function (data) {
                 epm.removeLocalItem(epm.k.USER_TOKEN);
-                // epm.removeSessionItem(epm.k.BUYER);
-                // epm.removeSessionItem(epm.k.ADDRESS_LIST);
-
-                window.location.href = 'ww.html';
+                window.location.href = 'index.html';
             });
         },
-
-        // getMarketList: function(lng, lat, callBack, fail) {
-        //     var params = {};
-        //     params['action'] = 'get_market_list';
-        //     params['longitude'] = lng;
-        //     params['latitude'] = lat;
-        //
-        //     epm.ajax(params, function(data) {
-        //         if ($.isFunction(callBack)) {
-        //             callBack(data);
-        //         }
-        //     }, function(data) {
-        //         if ($.isFunction(fail)) {
-        //             fail(data);
-        //         }
-        //     });
-        // },
 
         addSearchKeywords: function (value, type) {
             var item;
@@ -396,191 +163,6 @@
             // }
             return value;
         }
-
-        /* ,setCart: function(shopIID, goodsIID, goodsAmount, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         try {
-         goodsAmount = parseInt(goodsAmount);
-         } catch (err) {
-         goodsAmount = 1;
-         }
-
-         var params = {};
-         params['action'] = 'set_cart';
-         params['shop_iid'] = shopIID;
-         params['goods_iid'] = goodsIID;
-         params['goods_amount'] = goodsAmount;
-
-         epm.ajax(params, function(data) {
-         spInitCartAmount(function() {
-         if ($.isFunction(callBack)) {
-         callBack(data);
-         }
-         });
-         });
-         },
-         addCart: function(shopIID, goodsIID, amount, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'add_cart';
-         params['shop_iid'] = shopIID;
-         params['goods_iid'] = goodsIID;
-         params['goods_amount'] = amount;
-
-         epm.ajax(params, function(data) {
-         spInitCartAmount(function() {
-         if ($.isFunction(callBack)) {
-         callBack(data);
-         }
-         });
-         });
-         },
-         subCart: function(shopIID, goodsIID, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'sub_cart';
-         params['shop_iid'] = shopIID;
-         params['goods_iid'] = goodsIID;
-         params['goods_amount'] = 1;
-
-         epm.ajax(params, function(data) {
-         spInitCartAmount(function() {
-         if ($.isFunction(callBack)) {
-         callBack(data);
-         }
-         });
-         });
-         },
-         removeCart: function(cartIID, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'remove_cart';
-         params['cart_iid'] = cartIID;
-
-         epm.ajax(params, function(data) {
-         spInitCartAmount(function() {
-         if ($.isFunction(callBack)) {
-         callBack(data);
-         }
-         });
-         });
-         },
-         removeCarts: function(cartIIDs, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         if (!epm.isArray(cartIIDs)) {
-         alert('无效的购物车商品 ');
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'remove_carts';
-         params['cart_iids'] = cartIIDs;
-
-         epm.ajax(params, function(data) {
-         spInitCartAmount(function() {
-         if ($.isFunction(callBack)) {
-         callBack(data);
-         }
-         });
-         });
-         },
-
-         addGoodsLike: function(shopIID, goodsIID, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'add_goods_like';
-         params['shop_iid'] = shopIID;
-         params['goods_iid'] = goodsIID;
-
-         epm.ajax(params, callBack);
-         },
-         addShopLike: function(shopIID, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'add_shop_like';
-         params['shop_iid'] = shopIID;
-
-         epm.ajax(params, callBack);
-         },
-         removeGoodsLike: function(shopIID, goodsIID, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'remove_goods_like';
-         params['shop_iid'] = shopIID;
-         params['goods_iid'] = goodsIID;
-
-         epm.ajax(params, callBack);
-         },
-         removeShopLike: function(shopIID, callBack) {
-         if (!epm.b.isLogin()) {
-         window.location.href = 'login.html';
-         return;
-         }
-
-         var params = {};
-         params['action'] = 'remove_shop_like';
-         params['shop_iid'] = shopIID;
-
-         epm.ajax(params, callBack);
-         },
-         addSelectedCart: function(cartIID) {
-         var cartArray = [];
-         cartArray = JSON.parse(epm.getLocalItem(epm.k.SELECTED_CART));
-         if (null != cartArray && cartArray.length > 0) {
-         if ($.inArray(cartIID, cartArray) >= 0) {
-         return;
-         }
-         } else {
-         cartArray = [];
-         }
-         cartArray.push(cartIID);
-         epm.setLocalItem(epm.k.SELECTED_CART, JSON.stringify(cartArray));
-         },
-         getSelectedCart: function() {
-         return JSON.parse(epm.getLocalItem(epm.k.SELECTED_CART));
-         },
-         removeSelectedCart: function(cartIID) {
-         var cartArray = JSON.parse(epm.getLocalItem(epm.k.SELECTED_CART));
-         if (null == cartArray) return;
-         var _index = $.inArray(cartIID, cartArray);
-         if (_index >= 0) {
-         cartArray.splice(_index, 1);
-         epm.removeLocalItem(epm.k.SELECTED_CART);
-         epm.setLocalItem(epm.k.SELECTED_CART, JSON.stringify(cartArray));
-         }
-         }*/
     };
 
     epm.setSessionItem = function (key, value) {
@@ -783,20 +365,22 @@
         }
     };
 
-    epm.ajax = function (params, success, successError, fail, always) {
+    epm.ajax = function (url, params, success, successError, fail, always) {
         if (!epm.isEmpty(params)
             && !epm.isEmpty(epm.c.userToken)) {
             params['user_token'] = epm.c.userToken;
         }
         params['api_version'] = API_VERSION;
 
-        $.ajax(API_URL, {
+        $.ajax(url, {
             xhrFields: {
                 withCredentials: true
             },
             type: 'POST',
             dataType: 'text',
-            data: params
+            data: params,
+            contentType: 'application/json',
+            processData: false
         }).done(function (data, status, xhr) {
             if (data == undefined || data == null || data.length == 0) {
                 alert('服务器繁忙');
@@ -807,27 +391,27 @@
                 data = JSON.parse(data);
             }
 
-            if (data['ans'] != 'ok') {
+            // if (data['ans'] != 'ok') {
+            //
+            //     if (data['ans'] == '用户不存在') {
+            //         epm.b.logOut();
+            //     } else {
+            //         if ($.isFunction(successError)) {
+            //             successError(data);
+            //         } else {
+            //             alert(data['ans']);
+            //         }
+            //     }
+            //
+            //     return;
+            // }
 
-                if (data['ans'] == '用户不存在') {
-                    epm.b.logOut();
-                } else {
-                    if ($.isFunction(successError)) {
-                        successError(data);
-                    } else {
-                        alert(data['ans']);
-                    }
-                }
-
-                return;
-            }
-
-            if (!epm.isEmpty(data['new_user_token'])) {
-                var newUserToken = data['new_user_token'];
-                if (newUserToken !== epm.c.userToken) {
-                    epm.c.userToken = newUserToken;
-                }
-            }
+            // if (!epm.isEmpty(data['new_user_token'])) {
+            //     var newUserToken = data['new_user_token'];
+            //     if (newUserToken !== epm.c.userToken) {
+            //         epm.c.userToken = newUserToken;
+            //     }
+            // }
 
             if ($.isFunction(success)) {
                 success(data);
@@ -872,9 +456,20 @@
          Backbone.history.navigate("#booklist",true);
          }
          });*/
-        $.post(url,{crossDomain: true, withCredential: true, xhrFields: {
-            'Access-Control-Allow-Origin': '*'
-        },dataType: 'jsonp',jsonpCallback:"success"},"json").done(function (data) {
+
+        // $.ajax(API_URL, {
+        //     xhrFields: {
+        //         withCredentials: true
+        //     },
+        //     type: 'POST',
+        //     dataType: 'text',
+        //     data: params
+        $.post(url,{
+            data:urlParams,
+            crossDomain: true,
+            withCredential: true,
+            xhrFields: {'Access-Control-Allow-Origin': '*'},
+            dataType: 'jsonp',jsonpCallback:"success"}, "json").done(function (data) {
             console.log(url);
             console.log(urlParams);
             console.log(JSON.stringify(data));
@@ -1061,7 +656,6 @@
 })();
 
 $(document).ready(function () {
-    alert("yes you win");
     if ($.isFunction(window.pageInit)) {
         pageInit();
     }

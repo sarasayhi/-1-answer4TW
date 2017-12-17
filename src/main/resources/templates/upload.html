@@ -1,14 +1,23 @@
 <!DOCTYPE html>
+<!--<html lang="zh-cn">-->
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>-->
+    <!--<meta http-equiv="x-ua-compatible" content="ie=edge">-->
+    <!--<meta name="description" content="">-->
+    <!--<title>我的账户-意见反馈</title>-->
+<!--</head>-->
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-
-<h2>Spring Boot多文件上传示例(使用AJAX)</h2>
-
+<a href="#" id="AddMoreFileBox" class="btn btn-info">添加更多的input输入框</a>
 <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
-    <input type="text" name="extraField"/><br/><br/><button id="addBtn">新增</button>
-    <div id="fileBox">
-        <input type="file" name="files"/><br/><br/>
+<div id="InputsWrapper">
+    <input type="text" name="extraField"/><br/><br/>
+    <div>
+        <input type="file" name="files" id="field_1"/>
+        <a href="#" class="removeclass">×</a>
     </div>
+</div>
     <input type="submit" value="提交" id="btnSubmit"/>
 </form>
 
@@ -16,9 +25,8 @@
 <pre>
     <span id="result"></span>
 </pre>
-
+<!--<script src="js/vendor/jquery-3.1.1.js"></script>-->
 <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-
 </body>
 </html>

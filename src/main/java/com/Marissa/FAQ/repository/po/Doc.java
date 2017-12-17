@@ -1,5 +1,7 @@
 package com.Marissa.FAQ.repository.po;
 
+import org.springframework.stereotype.Controller;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -23,11 +25,14 @@ public class Doc implements Serializable{
     private Date updateTime;
     @Column(name = "userId")
     private int userId;
+    @Column(name = "deleted")
+    private int deleted;
+    @Column
+    private String ext;
 
     public Doc() {}
 
-    public Doc(int id, String name, String content, String tags, int collectCnt, Date createTime, Date updateTime, int userId) {
-        this.id = id;
+    public Doc(String name, String content, String tags, int collectCnt, Date createTime, Date updateTime, int userId, int deleted, String ext) {
         this.name = name;
         this.content = content;
         this.tags = tags;
@@ -35,6 +40,8 @@ public class Doc implements Serializable{
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.userId = userId;
+        this.deleted = deleted;
+        this.ext = ext;
     }
 
     public int getId() {
@@ -99,5 +106,21 @@ public class Doc implements Serializable{
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
     }
 }

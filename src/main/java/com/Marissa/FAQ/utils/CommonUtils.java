@@ -1,13 +1,17 @@
 package com.Marissa.FAQ.utils;
 
 
+import com.Marissa.FAQ.repository.po.DownloadRecord;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +21,7 @@ import java.util.regex.Pattern;
 public class CommonUtils {
 
     public static String HOST_DOMAIN = "http://127.0.0.1:8080/";
-    public static String IMAGE_DIR = "D:/test/";
+    public static String IMAGE_DIR = "test"+ File.separator;
     public static String[] IMAGE_FILE_EXT = new String[]{"png","bmp","jpg"};
     public static boolean isFileAllowed(String fileExt){
         for(String ext : IMAGE_FILE_EXT){
@@ -26,6 +30,44 @@ public class CommonUtils {
             }
         }
         return false;
+    }
+
+    public static void download(String fileName,String filePath,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        //声明本次下载状态的记录对象
+        DownloadRecord downloadRecord = new DownloadRecord(fileName, filePath, request);
+        //设置响应头和客户端保存文件名
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("multipart/form-data");
+        response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
+        //用于记录以完成的下载的数据量，单位是byte
+        long downloadedLength = 0l;
+        try {
+            //打开本地文件流
+            InputStream inputStream = new FileInputStream(filePath);
+            //激活下载操作
+            OutputStream os = response.getOutputStream();
+
+            //循环写入输出流
+            byte[] b = new byte[2048];
+            int length;
+            while ((length = inputStream.read(b)) > 0) {
+                os.write(b, 0, length);
+                downloadedLength += b.length;
+            }
+
+            // 这里主要关闭。
+            os.close();
+            inputStream.close();
+        } catch (Exception e){
+            downloadRecord.setStatus(DownloadRecord.STATUS_ERROR);
+            throw e;
+        }
+        downloadRecord.setStatus(DownloadRecord.STATUS_SUCCESS);
+        downloadRecord.setEndTime(new Timestamp(System.currentTimeMillis()));
+        downloadRecord.setLength(downloadedLength);
+        //存储记录
     }
 
     public static String getJSONString(int code){
@@ -52,6 +94,8 @@ public class CommonUtils {
 //    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     public final Logger logger = LoggerFactory.getLogger(CommonUtils.class);
 
+
+
     public static String shaEncode(String str){
         MessageDigest messageDigest;
         String encdeStr = "";
@@ -77,7 +121,6 @@ public class CommonUtils {
         System.out.println("原始：" + str);
         System.out.println("SHA后：" + shaEncode(str));
     }
-
 
     private static final Pattern IPV4_PATTERN =
             Pattern.compile(

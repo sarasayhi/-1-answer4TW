@@ -26,20 +26,20 @@ import java.util.Map;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2017/08/10 14:47
  */
-@Api(value = "测试C",tags = "测试C")
-@RequestMapping("/api/testc")
-@RestController
+//@Api(value = "测试C",tags = "测试C")
+//@RequestMapping("/api/testc")
+//@RestController
 public class TestcController {
 
-    @PostMapping("/selectLog")
-    @ApiOperation(value = "selectLog",notes = "selectLog")
+//    @PostMapping("/selectLog")
+//    @ApiOperation(value = "selectLog",notes = "selectLog")
     public RestMessage selectLog(@RequestBody Map<String,Object> infoMap,
                                  @RequestAttribute(name = "CURRENTUSERID" ) int userId){
         return new RestMessage(infoMap);
     }
 
-    @PostMapping("/select1")
-    @ApiOperation(value = "header参数",notes = "header参数")
+//    @PostMapping("/select1")
+//    @ApiOperation(value = "header参数",notes = "header参数")
     @ApiImplicitParams({
             @ApiImplicitParam(value = "code",name = "code",dataType = "string"),
             @ApiImplicitParam(value = "headerparam",name = "headerparam",dataType = "string"),
@@ -51,12 +51,12 @@ public class TestcController {
         return new RestMessage(ImmutableMap.of("code",code,"header",headerparam,"page",page,"page1",page1));
     }
 
-    @DeleteMapping(value = "/xdf/{code}")
-    @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "Long",paramType = "path")})
+//    @DeleteMapping(value = "/xdf/{code}")
+//    @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "Long",paramType = "path")})
     public RestMessage urlpath(@PathVariable(value = "code") Long code){
         return new RestMessage(code);
     }
-    @GetMapping("/rest")
+//    @GetMapping("/rest")
     public Rest<ReqEntity> rest(){
         ReqEntity reqEntity=new ReqEntity();
         reqEntity.setName("张飞");
@@ -66,7 +66,7 @@ public class TestcController {
         return restEetity;
     }
 
-    @GetMapping("/resp")
+//    @GetMapping("/resp")
     public RestEetity resp(){
         ReqEntity reqEntity=new ReqEntity();
         reqEntity.setName("张飞");

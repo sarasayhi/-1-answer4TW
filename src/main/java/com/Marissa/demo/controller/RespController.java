@@ -26,9 +26,9 @@ import java.util.Map;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2017/09/04 15:49
  */
-@Api(value = "测试ResponseEntity",tags = "测试ResponseEntity")
-@RequestMapping("/api/resp")
-@RestController
+//@Api(value = "测试ResponseEntity",tags = "测试ResponseEntity")
+//@RequestMapping("/api/resp")
+//@RestController
 public class RespController {
 
 //    @PostMapping("/test")

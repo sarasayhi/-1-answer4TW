@@ -3,6 +3,7 @@ package com.Marissa.FAQ.controller.vo;
 public class BaseResult<T> {
     private String ans;
     private String code;
+    private String msg;
     private T data;
 
     public BaseResult() {}
@@ -35,5 +36,13 @@ public class BaseResult<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }
