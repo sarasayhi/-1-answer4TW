@@ -41,7 +41,7 @@ function initDataList() {
         //         "ext":"files"
         //     }
         // ]
-        var $dataList = $('.detail-list'),
+        var $dataList = $('#dataList'),
             // $load = $('.load-text'),
             // $dataItem = $('.cm-label-item'),
             html = '';
@@ -106,21 +106,29 @@ function initDataList() {
 function eventTrigger() {
     //on add input button click
     $AddButton.click(function (e) {
-        var x = $InputsWrapper.find('input[type="file"]').length; //initlal text box count
+        var x = $InputsWrapper.find('li').length; //initlal text box count
+        // var x = $InputsWrapper.find('input[type="file"]').length; //initlal text box count
         if (x <= MaxInputs) //max input box allowed
         {
             FieldCount++; //text box added increment
             //add input box
-            $InputsWrapper.append('<div><input type="file" name="files" id="field_' + FieldCount + '"/><a href="#" class="removeclass">×</a></div>');
+            $InputsWrapper.append('<li class="detail-list-title">'
+                +'<div><a class="cm-btn-sm cm-btn-active removeclass">删除</a></div>'
+                +'<div>'+FieldCount+'</div>'
+                +'<div><input type="file" name="files" id="field_' + FieldCount + '"/></div>'
+                // +'<div><input type="text" name="tags" id="tags"/></div>'
+                +'<span id="result"></span>'
+                +'</li>');
             x++; //text box increment
         }
         return false;
     });
 
     $("body").on("click", ".removeclass", function (e) { //user click on remove text
-        var x = $InputsWrapper.find('input[type="file"]').length;
+        var x = $InputsWrapper.find('li').length;
+        // var x = $InputsWrapper.find('input[type="file"]').length;
         if (x > 1) {
-            $(this).parent('div').remove(); //remove text box
+            $(this).parents('li').remove(); //remove text box
             x--; //decrement textbox
         }
         return false;

@@ -111,13 +111,25 @@ public class RestUploadController {
     private void saveUploadedFiles(List<MultipartFile> files,HttpServletRequest request) throws IOException {
         ResourceLoader resourceLoader = new DefaultResourceLoader();
         String path1 = "";
-        try {
-            path1 = resourceLoader.getResource("file:").getFile().getAbsolutePath() + File.separator +"upload"+ File.separator ;
+//        try {
+//            path1 = resourceLoader.getResource("file:").getFile().getAbsolutePath() + File.separator +"upload"+ File.separator ;
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //获取跟目录
+        File test = new File(ResourceUtils.getURL("classpath:").getPath());
+        if(!test.exists()) test = new File("");
+        System.out.println("path:"+test.getAbsolutePath());
 
+//如果上传目录为/static/images/upload/，则可以如下获取：
+        File upload = new File(test.getAbsolutePath(),"static/upload/");
+        if(!upload.exists()) upload.mkdirs();
+        System.out.println("upload url:"+upload.getAbsolutePath());
+//在开发测试模式时，得到的地址为：{项目跟目录}/target/static/images/upload/
+//在打包成jar正式发布时，得到的地址为：{发布jar包目录}/static/images/upload/
+        path1 = upload.getAbsolutePath();
         for (MultipartFile file : files) {
 
             if (file.isEmpty()) {

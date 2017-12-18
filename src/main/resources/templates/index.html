@@ -177,20 +177,20 @@
                 </form>
 
                 <!--<script>-->
-                    <!--(function (window) {-->
-                        <!--var INSIGHT_CONFIG = {-->
-                            <!--TRANSLATION: {-->
-                                <!--POSTS: '文章',-->
-                                <!--PAGES: '页面',-->
-                                <!--CATEGORIES: '分类',-->
-                                <!--TAGS: '标签',-->
-                                <!--UNTITLED: '(未命名)'-->
-                            <!--},-->
-                            <!--ROOT_URL: '/',-->
-                            <!--CONTENT_URL: '/content.json'-->
-                        <!--};-->
-                        <!--window.INSIGHT_CONFIG = INSIGHT_CONFIG;-->
-                    <!--})(window);-->
+                <!--(function (window) {-->
+                <!--var INSIGHT_CONFIG = {-->
+                <!--TRANSLATION: {-->
+                <!--POSTS: '文章',-->
+                <!--PAGES: '页面',-->
+                <!--CATEGORIES: '分类',-->
+                <!--TAGS: '标签',-->
+                <!--UNTITLED: '(未命名)'-->
+                <!--},-->
+                <!--ROOT_URL: '/',-->
+                <!--CONTENT_URL: '/content.json'-->
+                <!--};-->
+                <!--window.INSIGHT_CONFIG = INSIGHT_CONFIG;-->
+                <!--})(window);-->
                 <!--</script>-->
                 <!--<script src="/js/insight.js"></script>-->
 
@@ -233,26 +233,32 @@
 
 
     <div class="cm-main">
-        <div class="half">
-            <a href="#" id="AddMoreFileBox" class="btn btn-info">添加更多文件框</a>
-            <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
-                <div id="InputsWrapper">
-                    <input type="text" name="extraField" style="display: none"/>
-                    <div>
-                        <input type="file" name="files" id="field_1"/>
-                        <a href="#" class="removeclass">×</a>
-                    </div>
+        <a href="#" id="AddMoreFileBox" class="btn btn-info">添加更多文件上传框</a>
+        <div class="detail">
+            <div class="detail-content">
+                <div class="detail-list-title">
+                    <div>操作</div>
+                    <div>编号</div>
+                    <div>文件名</div>
+                    <div>标签</div>
+                    <div>上传结果</div>
                 </div>
-                <input type="submit" value="提交" id="btnSubmit"/>
-            </form>
+                <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+                    <input type="text" name="extraField" style="display: none"/>
+                    <!--金额列表-->
+                    <ul class="detail-list" id="InputsWrapper">
+                        <li class="detail-list-title">
+                            <div><a class="cm-btn-sm cm-btn-active removeclass">删除</a></div>
+                            <div>1</div>
+                            <div><input type="file" name="files" id="field_1"/></div>
+                            <div><input type="text" name="tags" id="tags"/></div>
+                            <span id="result"></span>
+                        </li>
+                    </ul>
+                    <input type="submit" value="提交" id="btnSubmit"/>
+                </form>
+            </div>
         </div>
-        <div class="half">
-            <h1>文件提交结果：</h1>
-            <pre>
-                <span id="result"></span>
-            </pre>
-        </div>
-
         <!--可用金额-->
         <div class="detail">
             <!--<div class="clearfix">
@@ -274,7 +280,7 @@
                     <div>操作</div>
                 </div>
                 <!--金额列表-->
-                <ul class="detail-list">
+                <ul class="detail-list" id="dataList">
 
                 </ul>
                 <div class="paging">
