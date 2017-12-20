@@ -2,6 +2,8 @@ package com.Marissa.FAQ.controller;
 
 import com.Marissa.FAQ.controller.vo.UploadModel;
 import com.Marissa.FAQ.repository.po.Doc;
+import com.Marissa.FAQ.repository.po.DocContent;
+import com.Marissa.FAQ.service.DocContentService;
 import com.Marissa.FAQ.service.DocService;
 import com.Marissa.FAQ.utils.CommonUtils;
 import com.Marissa.FAQ.utils.ConstantParameter;
@@ -44,6 +46,9 @@ public class RestUploadController {
 
     @Resource
     private DocService docService;
+
+    @Resource
+    private DocContentService docContentService;
 
     private final Logger logger = LoggerFactory.getLogger(RestUploadController.class);
 
@@ -113,7 +118,6 @@ public class RestUploadController {
         String path1 = "";
 //        try {
 //            path1 = resourceLoader.getResource("file:").getFile().getAbsolutePath() + File.separator +"upload"+ File.separator ;
-//
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -158,6 +162,8 @@ public class RestUploadController {
 //                }
 //            }
             logger.info("{0}filesMsg:  "+JSON.toJSONString(file));
+            DocContent docContent = new DocContent(bytes,file.getOriginalFilename());
+            docContentService.addDocContentMsg(docContent);
             Files.write(path, bytes);
 
             //将文件信息存入doc信息表中
