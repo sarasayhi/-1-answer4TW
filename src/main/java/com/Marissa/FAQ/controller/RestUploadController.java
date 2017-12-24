@@ -70,7 +70,9 @@ public class RestUploadController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        list.get(0).setTags(path1);
+        if(list.size() > 0 ){
+            list.get(0).setTags(path1);
+        }
         return new ResponseEntity<List<Doc>>(list,HttpStatus.OK);
     }
     // Multiple file upload
@@ -133,7 +135,7 @@ public class RestUploadController {
         System.out.println("upload url:"+upload.getAbsolutePath());
 //在开发测试模式时，得到的地址为：{项目跟目录}/target/static/images/upload/
 //在打包成jar正式发布时，得到的地址为：{发布jar包目录}/static/images/upload/
-        path1 = upload.getAbsolutePath();
+        path1 = upload.getAbsolutePath() + "/";
         for (MultipartFile file : files) {
 
             if (file.isEmpty()) {
@@ -163,12 +165,12 @@ public class RestUploadController {
 //            }
             logger.info("{0}filesMsg:  "+JSON.toJSONString(file));
             DocContent docContent = new DocContent(bytes,file.getOriginalFilename());
-            docContentService.addDocContentMsg(docContent);
+//            docContentService.addDocContentMsg(docContent);
             Files.write(path, bytes);
 
             //将文件信息存入doc信息表中
 //            String name, String content, String tags, int collectCnt, Date createTime, Date updateTime, int userId
-            Doc doc = new Doc(file.getName(),"","tags",0,new Date(),new Date(),0,0,file.getName());
+            Doc doc = new Doc(file.getOriginalFilename(),"","tags",0,new Date(),new Date(),0,0,file.getName());
             docService.addDocMsg(doc);
             //将二进制流数据存入数据表中 id值 id 数字块 数据
         }

@@ -11,6 +11,11 @@ public class PageController {
         return "index";
     }
 
+    @RequestMapping(value = "/detail")
+    public String detail(){
+        return "detail";
+    }
+
     @RequestMapping("/file")
     public String file(){
         return "file";

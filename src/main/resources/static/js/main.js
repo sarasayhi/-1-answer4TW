@@ -76,7 +76,7 @@ function initDataList() {
                 + '<div>' + epm.getDateTime(value["createTime"]) + '</div>'
                 + '<div>' + value["tags"] + '</div>'
                 + '<div>'
-                + '<a class="cm-btn-sm cm-btn-active">详情</a>'
+                + '<a class="cm-btn-sm cm-btn-active" href="'+encodeURI('detail?href='+value['name'])+'">详情</a>'
                 + '<a href="'+ path + value["name"] + '" class="cm-btn-sm cm-btn-active download" data-name="' + value["name"] + '">下载</a>'
                 + '<a class="cm-btn-sm cm-btn-active">编辑</a>'
                 + '<a class="cm-btn-sm cm-btn-active">删除</a>'
