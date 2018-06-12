@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ajax demo</title>
+</head>
+
+<body>
+<input type="text" name="num1" id="num1"/> <br/>
+<input type="text" name="num2" id="num2"/> <br/>
+
+<input type="button" value="从服务区端获取数据" onclick="ajaxSubmit();"/>
+
+<div id="content"></div>
+<script type="text/javascript">
+        var xmlHttpRequest = null;
+
+        function ajaxSubmit(){
+            /*
+                使用Ajax准备向服务器端发送一个请求
+            */
+            if(null != xmlHttpRequest){ //使用GET方式，          //异步
+                var num1 = document.getElementById("num1").value;
+                var num2 = document.getElementById("num2").value;
+
+
+            //  xmlHttpRequest.open("GET", "AjaxServlet?num1=" + num1 + "&num2=" + num2, "true");
+
+                xmlHttpRequest.onreadystatechange = ajaxCallBack;   //注册一个回调函数
+
+                //向服务器端发送数据
+            //  xmlHttpRequest.send(null);  //get方式设置为null
+
+                //post方式
+                xmlHttpRequest.open("POST", "AjaxServlet", "true");
+                //使用post方式提交数据，必须加上下面这行代码
+                xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xmlHttpRequest.send("num1=" + num1 + "&num2=" + num2);
+
+            }
+        }
+
+        function ajaxCallBack(){
+
+            if(xmlHttpRequest.readyState == 4){
+
+                if(xmlHttpRequest.status == 200){
+                    var responseText = xmlHttpRequest.responseText;
+
+                    document.getElementById("content").innerHTML = responseText;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
